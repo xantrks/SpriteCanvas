@@ -1,0 +1,21 @@
+<div class="flex flex-col h-full">
+  <h3 class="text-2xl font-extrabold mb-4">Asset Gallery</h3>
+  @if (assets().length === 0) {
+    <div class="text-center text-gray-500 py-8 border-2 border-dashed border-black flex-grow">
+      <p>Your generated assets will appear here.</p>
+    </div>
+  } @else {
+    <div class="grid grid-cols-2 gap-4 overflow-y-auto pr-2 -mr-2">
+      @for (asset of assets(); track asset.id) {
+        <div 
+            (click)="selectAsset(asset)"
+            class="aspect-square bg-gray-200 cursor-pointer border-2 border-black hover:border-yellow-400 transition-all group relative neo-shadow-small btn-neo">
+          <img [src]="asset.dataUrl" alt="Generated Asset" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="text-white text-xs text-center font-bold capitalize p-1">{{ asset.type }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

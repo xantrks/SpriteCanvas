@@ -1,0 +1,56 @@
+<div class="flex min-h-screen font-sans">
+  <!-- Sidebar -->
+  <aside class="w-72 bg-white border-r-4 border-black p-6 flex-col flex-shrink-0 hidden lg:flex">
+    <header class="mb-8">
+      <h1 class="text-4xl font-extrabold tracking-tight">
+        Sprite<span class="bg-yellow-300 border-2 border-black px-1">Canvas</span>
+      </h1>
+      <p class="text-gray-600 mt-1 font-semibold">AI Game Asset Studio</p>
+    </header>
+
+    <nav class="flex flex-col gap-3 mb-8">
+      <button
+        (click)="activeMode.set('sprite')"
+        [class]="activeMode() === 'sprite' ? 'bg-black text-white' : 'bg-white text-black hover:bg-yellow-100'"
+        class="w-full text-left font-bold py-3 px-4 border-4 border-black neo-shadow-small btn-neo"
+      >
+        Sprite Generator
+      </button>
+      <button
+        (click)="activeMode.set('tile')"
+        [class]="activeMode() === 'tile' ? 'bg-black text-white' : 'bg-white text-black hover:bg-yellow-100'"
+        class="w-full text-left font-bold py-3 px-4 border-4 border-black neo-shadow-small btn-neo"
+      >
+        Tile Canvas
+      </button>
+    </nav>
+
+    <div class="flex-grow flex flex-col min-h-0">
+        <app-gallery [assets]="assets()"></app-gallery>
+    </div>
+    
+    <div class="mt-auto pt-6">
+      <div class="border-2 border-black bg-gray-100 p-2">
+        <p class="text-xs text-gray-500 font-bold">USER ID</p>
+        <p class="font-mono text-sm">dev-user-01</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-4 sm:p-6 lg:p-8 bg-dots-pattern flex flex-col">
+      @if (activeMode() === 'sprite') {
+        <app-sprite-generator class="flex-1 min-h-0"></app-sprite-generator>
+      } @else {
+        <app-tile-canvas class="flex-1 min-h-0"></app-tile-canvas>
+      }
+  </main>
+</div>
+
+<style>
+.bg-dots-pattern {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 1.25rem 1.25rem;
+}
+</style>

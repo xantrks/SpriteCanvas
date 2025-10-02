@@ -1,0 +1,5 @@
+{
+  "name": "fSpriteCanvas",
+  "description": "An AI-powered application for generating sprite sheets and creating and editing tilemaps for game development.",
+  "requestFramePermissions": []
+}
